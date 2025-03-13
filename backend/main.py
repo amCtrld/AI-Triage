@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from openai import OpenAI  # Import the new OpenAI client
 import firebase_admin
 from firebase_admin import credentials, firestore
-from openai import OpenAI  # Import the new OpenAI client
 
+# Initialize FastAPI app
 app = FastAPI()
 
 # Add CORS middleware
@@ -16,23 +17,26 @@ app.add_middleware(
 )
 
 # Initialize Firebase
-cred = credentials.Certificate("../serviceAccountKey.json")
+cred = credentials.Certificate("../serviceAccountKey.json")  # Replace with your Firebase credentials
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # Initialize OpenAI
-client = OpenAI(api_key="")  # Replace with your OpenAI API key
+client = OpenAI(api_key="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")  # Replace with your OpenAI API key
 
+# Root endpoint
 @app.get("/")
 def read_root():
     return {"message": "Hello from the backend!"}
 
+# Register patient endpoint
 @app.post("/register-patient")
 async def register_patient(patient_data: dict):
     doc_ref = db.collection("patients").document()
     doc_ref.set(patient_data)
     return {"patient_id": doc_ref.id}
 
+# Get patients endpoint
 @app.get("/get-patients")
 async def get_patients():
     patients_ref = db.collection("patients")
@@ -40,6 +44,7 @@ async def get_patients():
     patients = [{"id": doc.id, **doc.to_dict()} for doc in docs]
     return patients
 
+# Chat endpoint
 @app.post("/chat")
 async def chat_with_patient(chat_data: dict):
     messages = chat_data.get("messages", [])
@@ -62,15 +67,7 @@ async def chat_with_patient(chat_data: dict):
     assistant_reply = response.choices[0].message.content
     return {"reply": assistant_reply}
 
-@app.post("/check-symptoms")
-async def check_symptoms(symptom_data: dict):
-    symptoms = symptom_data.get("symptoms", "").lower()
-    urgency_level = "non-urgent"  # Default urgency level
-
-    # Basic symptom categorization
-    if "chest pain" in symptoms:
-        urgency_level = "emergency"
-    elif "fever" in symptoms or "cough" in symptoms:
-        urgency_level = "urgent"
-
-    return {"urgency": urgency_level}
+# Handle OPTIONS requests for /chat
+@app.options("/chat")
+async def options_chat():
+    return {"message": "OK"}
