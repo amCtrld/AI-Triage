@@ -6,7 +6,7 @@ import pandas as pd
 from ml_model import predict_triage
 
 # Initialize OpenAI client
-client = OpenAI(api_key="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")  # Replace with your actual API key
+client = OpenAI(api_key="sk-proj-xxx-xxx")  # Replace with your actual API key
 
 def extract_symptoms_from_conversation(conversation):
     """

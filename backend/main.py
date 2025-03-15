@@ -27,7 +27,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # Initialize OpenAI
-client = OpenAI(api_key="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")  # Replace with your OpenAI API key
+client = OpenAI(api_key="sk-proj-xxx-xxx")  # Replace with your OpenAI API key
 
 # Load the ML model when the app starts
 try:
