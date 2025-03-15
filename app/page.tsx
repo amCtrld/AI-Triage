@@ -17,7 +17,6 @@ export default function Home() {
           {[
             { name: "Dashboard", href: "/dashboard" },
             { name: "Chat", href: "/chat" },
-            { name: "Triage", href: "/triage" },
             { name: "ML Triage", href: "/ml-triage" }
           ].map((item) => (
             <Link 

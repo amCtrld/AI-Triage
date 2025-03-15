@@ -42,3 +42,9 @@ next-env.d.ts
 
 #serviceAccount Key
 serviceAccountKey.json
+
+#firebase
+firebase.json
+
+#redudant files
+app/triage
