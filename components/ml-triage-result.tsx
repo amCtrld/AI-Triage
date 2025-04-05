@@ -24,6 +24,7 @@ export function MLTriageResult({
   patientData,
   onNewAssessment,
 }: TriageResultProps) {
+  
   // Determine border color based on triage category
   const getBorderColor = () => {
     const category = triageCategory.toLowerCase()

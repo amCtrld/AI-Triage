@@ -1,0 +1,63 @@
+Attempting to load model from triage_model.joblib...
+Successfully loaded model!
+
+Generating test data...
+Class distribution in test data:
+triage_category
+urgent      411
+high         82
+moderate      6
+low           1
+Name: count, dtype: int64
+
+Making predictions...
+
+Model Performance Metrics:
+Accuracy: 0.8040
+Precision: 0.8119
+Recall: 0.8040
+F1 Score: 0.8076
+
+Confusion Matrix:
+[[ 38   0   4  40]
+ [  0   0   1   0]
+ [  3   0   2   1]
+ [ 47   0   2 362]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+        high       0.43      0.46      0.45        82
+         low       0.00      0.00      0.00         1
+    moderate       0.22      0.33      0.27         6
+      urgent       0.90      0.88      0.89       411
+
+    accuracy                           0.80       500
+   macro avg       0.39      0.42      0.40       500
+weighted avg       0.81      0.80      0.81       500
+
+
+Per-Class Metrics:
+High:
+  Precision: 0.4318
+  Recall: 0.4634
+  F1 Score: 0.4471
+Low:
+  Precision: 0.0000
+  Recall: 0.0000
+  F1 Score: 0.0000
+Moderate:
+  Precision: 0.2222
+  Recall: 0.3333
+  F1 Score: 0.2667
+Urgent:
+  Precision: 0.8983
+  Recall: 0.8808
+  F1 Score: 0.8894
+
+Generating visualizations...
+Saved overall metrics chart to 'visualizations/overall_metrics.png'
+Saved per-class metrics chart to 'visualizations/per_class_metrics.png'
+Saved confusion matrix to 'visualizations/confusion_matrix.png'
+
+Evaluation complete! You can use these metrics in your report.

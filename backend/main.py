@@ -27,8 +27,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # Initialize OpenAI
-client = OpenAI(api_key="sk-proj-xxx-xxx")  # Replace with your OpenAI API key
-
+client = OpenAI(api_key="sk-proj-xxxx")  # Replace with your actual API key
 # Load the ML model when the app starts
 try:
     triage_model = joblib.load('triage_model.joblib')
