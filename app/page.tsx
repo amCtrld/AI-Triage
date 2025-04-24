@@ -15,7 +15,6 @@ export default function Home() {
         </Link>
         <nav className="ml-auto flex gap-6">
           {[
-            { name: "Dashboard", href: "/dashboard" },
             { name: "Chat", href: "/chat" },
             { name: "ML Triage", href: "/ml-triage" }
           ].map((item) => (
